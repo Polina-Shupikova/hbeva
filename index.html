@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>С Днём Рождения, Ева! 🎂💖</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background-color: #ffebf3;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #d63384;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 95%;
+            margin: 0 auto;
+            padding: 15px;
+            animation: fadeIn 2s;
+        }
+
+        h1 {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px #ff9ebb;
+            color: #ff1493;
+            word-wrap: break-word;
+        }
+
+        .message {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 15px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+            animation: slideUp 1.5s;
+            border: 2px dashed #ff69b4;
+        }
+
+        .hidden-message {
+            display: none;
+            margin-top: 15px;
+            font-style: italic;
+            animation: fadeIn 2s;
+            font-size: 0.9em;
+        }
+
+        button {
+            background: linear-gradient(45deg, #ff69b4, #ff1493);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-size: 0.9em;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 10px 5px;
+            font-weight: bold;
+            box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
+            width: 90%;
+            max-width: 300px;
+        }
+
+        button:hover {
+            transform: scale(1.05) translateY(-3px);
+            box-shadow: 0 6px 12px rgba(214, 51, 132, 0.4);
+        }
+
+        .hearts-container, .stars-container, .confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .heart-float, .star-float, .confetti {
+            position: absolute;
+            font-size: 20px;
+            animation: float 4s linear infinite;
+            opacity: 0;
+        }
+
+        .polaroid {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin: 15px;
+            transform: rotate(-3deg);
+            transition: transform 0.5s;
+            max-width: 90%;
+        }
+
+        .polaroid:hover {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .polaroid img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #eee;
+            border-radius: 5px;
+        }
+
+        .cake-container {
+            margin: 20px auto;
+            position: relative;
+            width: 250px;
+            max-width: 90%;
+            cursor: pointer;
+        }
+
+        .cake-img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .cake-img:hover {
+            transform: scale(1.03);
+        }
+
+        .candle {
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            animation: flicker 0.8s infinite alternate;
+        }
+
+        .music-control {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background: white;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            z-index: 100;
+            font-size: 18px;
+        }
+
+        #surprise {
+            display: none;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                max-width: 800px;
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .message {
+                padding: 20px;
+            }
+
+            button {
+                width: auto;
+                padding: 12px 25px;
+                font-size: 1em;
+            }
+
+            .cake-container {
+                width: 300px;
+            }
+
+            .candle {
+                top: 20px;
+                font-size: 28px;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+            100% { transform: rotate(0deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts-container" id="hearts"></div>
+    <div class="stars-container" id="stars"></div>
+    <div class="confetti-container" id="confetti"></div>
+
+    <audio id="birthdaySong" loop>
+        <source src="deti-online.com_-_happy-birthday-to-you-medlennaya.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="music-control" onclick="toggleMusic()">🎵</div>
+
+    <div class="container">
+        <h1>🎉 С Днём Рождения, Ева! 🎉</h1>
+
+        <div class="polaroid">
+            <!-- Замени src на реальную фотографию -->
+            <img src="photo_5233483093048947277_y.jpg" alt="Наше фото">
+            <p>Самой лучшей подруге!</p>
+        </div>
+
+        <div class="message">
+            <p>Дорогая Евочка! 🎂💖</p>
+            <p>Нажми на торт, чтобы задуть свечку и загадать желание!</p>
+
+            <div class="cake-container" onclick="blowCandle()">
+                <!-- Замени ссылку на своё фото торта -->
+                <img src="1f054ce8083730865acf2055297c7b6d.png" alt="Торт" class="cake-img">
+                <div class="candle" id="candle">🕯️</div>
+            </div>
+
+            <div class="hidden-message" id="hiddenMessage">
+                <p>Ура! Теперь загадай желание — оно обязательно сбудется! ✨</p>
+                <p>Дорогая Евочка, я от всей души поздравляю тебя с днем рождения!</p>
+                <p>Желаю тебе море улыбок, крепкого здоровья, исполнения мечт и чтобы каждый день был таким же ярким, как ты!</p>
+                <p>Я обожаю тебя за каждую нашу прогулку и тупую шутку, оооочень сильно жду тебя в вдк</p>
+                <p>С любовью, твоя Полина 💕</p>
+            </div>
+        </div>
+
+        <button onclick="startConfetti()">🎊 Запусти конфетти!</button>
+        <button onclick="showSurprise()">🎁 Сюрприз!</button>
+
+        <div id="surprise">
+            <h2>💌 ТЫ МОЯ СЛПВМ УЖЕ +- 15 ЛЕТ!</h2>
+            <p>Вот тебе виртуальный букет цветов 💐</p>
+            <div style="font-size: 2em; animation: shake 0.5s infinite;">🌹🌸🌺🌷💐</div>
+        </div>
+    </div>
+
+    <script>
+        // Музыка
+        const song = document.getElementById('birthdaySong');
+
+        function toggleMusic() {
+            if (song.paused) {
+                song.play().catch(e => console.log("Автовоспроизведение заблокировано"));
+            } else {
+                song.pause();
+            }
+        }
+
+        // Задуть свечу
+        function blowCandle() {
+            const candle = document.getElementById('candle');
+            const message = document.getElementById('hiddenMessage');
+
+            candle.style.animation = 'none';
+            candle.style.opacity = '0';
+            message.style.display = 'block';
+
+            // Запускаем конфетти
+            startConfetti();
+        }
+
+        // Конфетти
+        function startConfetti() {
+            const confettiContainer = document.getElementById('confetti');
+            const emojis = ['🎉', '🎊', '✨', '🎈', '🎁', '💖', '🌸'];
+
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                    confetti.style.fontSize = (Math.random() * 15 + 10) + 'px';
+                    confettiContainer.appendChild(confetti);
+
+                    setTimeout(() => {
+                        confetti.remove();
+                    }, 4000);
+                }, i * 50);
+            }
+        }
+
+        // Сюрприз
+        function showSurprise() {
+            const surprise = document.getElementById('surprise');
+            if (surprise.style.display === 'block') {
+                surprise.style.display = 'none';
+            } else {
+                surprise.style.display = 'block';
+                startConfetti();
+            }
+        }
+
+        // Плавающие сердечки и звёздочки при загрузке
+        window.onload = function() {
+            setInterval(() => {
+                createFloatingElements('💖', 'hearts');
+                createFloatingElements('⭐', 'stars');
+            }, 1000);
+        };
+
+        function createFloatingElements(emoji, containerId) {
+            const container = document.getElementById(containerId);
+            const element = document.createElement('div');
+            element.className = containerId === 'hearts' ? 'heart-float' : 'star-float';
+            element.innerHTML = emoji;
+            element.style.left = Math.random() * 100 + 'vw';
+            element.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            container.appendChild(element);
+
+            setTimeout(() => {
+                element.remove();
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
